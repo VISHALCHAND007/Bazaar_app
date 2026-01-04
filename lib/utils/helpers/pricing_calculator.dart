@@ -1,0 +1,5 @@
+class PricingCalculator {
+  PricingCalculator._();
+
+
+}

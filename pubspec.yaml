@@ -15,9 +15,18 @@ dependencies:
 
 #Utility packages
   
-  cupertino_icons: ^1.0.8
-  iconsax: ^0.0.8
+  http: ^1.6.0
+  intl: ^0.20.2
+  logger: ^2.6.2
+  url_launcher: ^6.3.2
+
+#  State management
   get: ^4.7.3
+  get_storage: ^2.1.1
+  
+#  Icons
+  iconsax: ^0.0.8
+  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
