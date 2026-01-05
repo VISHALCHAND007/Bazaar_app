@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,13 +51,13 @@ class DeviceUtility {
     return MediaQuery.of(Get.context!).padding.top;
   }
 
-  // static double getBottomNavigationBarHeight() {
-  //   return BottomNavigationBar;
-  // }
-  //
-  // static double getAppbarHeight() {
-  //   return AppBar;
-  // }
+  static double getBottomNavigationBarHeight() {
+    return kBottomNavigationBarHeight;
+  }
+
+  static double getAppbarHeight() {
+    return kToolbarHeight;
+  }
 
   static double getKeyboardHeight() {
     final viewInsets = View.of(Get.context!).viewInsets;
