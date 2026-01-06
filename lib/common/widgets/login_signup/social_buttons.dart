@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/constants/custom_size.dart';
-import '../../utils/constants/image_strings.dart';
-import '../../utils/constants/my_colors.dart';
+import '../../../utils/constants/custom_size.dart';
+import '../../../utils/constants/image_strings.dart';
+import '../../../utils/constants/my_colors.dart';
 
 class SocialButtons extends StatelessWidget {
   const SocialButtons({super.key});

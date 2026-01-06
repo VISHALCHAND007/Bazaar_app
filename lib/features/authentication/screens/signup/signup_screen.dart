@@ -1,5 +1,6 @@
-import 'package:e_commerce/common/widgets/horizontal_divider_with_text.dart';
-import 'package:e_commerce/common/widgets/social_btns.dart';
+import 'package:e_commerce/common/widgets/login_signup/horizontal_divider_with_text.dart';
+import 'package:e_commerce/common/widgets/login_signup/social_buttons.dart';
+import 'package:e_commerce/features/authentication/screens/signup/verification/verify_email.dart';
 import 'package:e_commerce/features/authentication/screens/signup/widgets/signup_form.dart';
 import 'package:e_commerce/utils/constants/custom_size.dart';
 import 'package:e_commerce/utils/constants/custom_strings.dart';
@@ -27,15 +28,15 @@ class SignupScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 //form
-                SignupForm(),
+                const SignupForm(),
 
                 //create account button
                 const SizedBox(height: CustomSize.spaceBtwSections),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(CustomStrings.createAccount),
+                    onPressed: () => Get.to(() => const VerifyEmail()),
+                    child: const Text(CustomStrings.createAccount),
                   ),
                 ),
 
@@ -50,7 +51,7 @@ class SignupScreen extends StatelessWidget {
                 ),
 
                 //social buttons
-                SocialButtons(),
+                const SocialButtons(),
               ],
             ),
           ),

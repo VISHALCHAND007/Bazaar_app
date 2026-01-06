@@ -1,7 +1,7 @@
 import 'package:e_commerce/utils/helpers/helpers.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/constants/my_colors.dart';
+import '../../../utils/constants/my_colors.dart';
 
 class HorizontalDividerWithText extends StatelessWidget {
   final String text;

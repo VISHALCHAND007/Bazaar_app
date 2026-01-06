@@ -24,7 +24,7 @@ class OnboardingScreen extends StatelessWidget {
             PageView(
               controller: controller.pageController,
               onPageChanged: controller.updatePageInd,
-              children: [
+              children: const [
                 OnboardingPage(
                   lottieAnimationPath: ImageStrings.onboardingAnim1,
                   title: CustomStrings.onBoardingTitle1,

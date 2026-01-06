@@ -14,4 +14,8 @@ class ImageStrings {
   static const String onboardingAnim1 = "assets/images/on_boarding_images/choose.json";
   static const String onboardingAnim2 = "assets/images/on_boarding_images/payment.json";
   static const String onboardingAnim3 = "assets/images/on_boarding_images/delivery.json";
+
+  //animation
+  static const String verify = "assets/images/animations/verify.json";
+  static const String verifySuccess = "assets/images/animations/verification_success.json";
 }

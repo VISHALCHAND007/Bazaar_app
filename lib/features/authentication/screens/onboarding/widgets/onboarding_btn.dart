@@ -12,7 +12,7 @@ class OnboardingSkipBtn extends StatelessWidget {
       right: CustomSize.defaultSpace,
       child: TextButton(
         onPressed: OnboardingController.instance.skipPage,
-        child: Text("Skip"),
+        child: const Text("Skip"),
       ),
     );
   }

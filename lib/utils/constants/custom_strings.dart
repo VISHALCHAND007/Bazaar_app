@@ -51,6 +51,6 @@ class CustomStrings {
   static const String confirmEmail = "Verify your email address";
   static const String confirmEmailSubTitle = "Congratulations, your account awaits: Verify your email to start shopping and experience a world of Unrivaled deals and personalized offers.";
   static const String emailNotReceivedMsg = "Didn't get the mail? Check your junk/spam or resend it";
-  static const String yourAccountCreatedTitle = "Your account successfully created!";
+  static const String yourAccountCreatedTitle = "Your account is created successfully!";
   static const String yourAccountCreatedSubTitle = "Welcome to Our Ultimate Shopping Destination: Your Account is Created, Unleash the joy of Seamless Online Shopping";
 }

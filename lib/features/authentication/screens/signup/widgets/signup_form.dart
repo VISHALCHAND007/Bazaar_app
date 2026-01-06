@@ -1,10 +1,7 @@
 import 'package:e_commerce/utils/helpers/helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../../common/widgets/horizontal_divider_with_text.dart';
-import '../../../../../common/widgets/social_btns.dart';
 import '../../../../../utils/constants/custom_size.dart';
 import '../../../../../utils/constants/custom_strings.dart';
 import '../../../../../utils/constants/my_colors.dart';
@@ -27,7 +24,7 @@ class SignupForm extends StatelessWidget {
                 Expanded(
                   child: TextFormField(
                     expands: false,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.user),
                       labelText: CustomStrings.firstName,
                     ),
@@ -37,7 +34,7 @@ class SignupForm extends StatelessWidget {
                 Expanded(
                   child: TextFormField(
                     expands: false,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.user),
                       labelText: CustomStrings.lastName,
                     ),
@@ -47,21 +44,21 @@ class SignupForm extends StatelessWidget {
             ),
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.user_edit),
                 labelText: CustomStrings.userName,
               ),
             ),
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.mail_lock_outlined),
                 labelText: CustomStrings.email,
               ),
             ),
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.call),
                 labelText: CustomStrings.phoneNo,
               ),
@@ -69,11 +66,11 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
+                prefixIcon: const Icon(Iconsax.password_check),
                 labelText: CustomStrings.password,
                 suffixIcon: IconButton(
                   onPressed: () {},
-                  icon: Icon(Iconsax.eye_slash),
+                  icon: const Icon(Iconsax.eye_slash),
                 ),
               ),
             ),

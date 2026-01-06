@@ -1,6 +1,6 @@
 import 'package:e_commerce/common/styles/spacing_style.dart';
-import 'package:e_commerce/common/widgets/horizontal_divider_with_text.dart';
-import 'package:e_commerce/common/widgets/social_btns.dart';
+import 'package:e_commerce/common/widgets/login_signup/horizontal_divider_with_text.dart';
+import 'package:e_commerce/common/widgets/login_signup/social_buttons.dart';
 import 'package:e_commerce/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:e_commerce/features/authentication/screens/login/widgets/login_header.dart';
 import 'package:e_commerce/utils/constants/custom_strings.dart';
@@ -20,25 +20,27 @@ class LoginScreen extends StatelessWidget {
     final isDark = Helpers.isDarkMode(context);
 
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: SpacingStyle.paddingWithAppbarHeight,
-          child: Column(
-            children: [
-              //header
-              LoginHeader(isDark: isDark),
-
-              // body: form
-              LoginForm(),
-
-              //Divider
-              HorizontalDividerWithText(
-                text: CustomStrings.orSignInWith.capitalize!,
-              ),
-              const SizedBox(height: CustomSize.spaceBtwSections),
-              //Social media icons
-              SocialButtons(),
-            ],
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: SpacingStyle.paddingWithAppbarHeight,
+            child: Column(
+              children: [
+                //header
+                LoginHeader(isDark: isDark),
+        
+                // body: form
+                const LoginForm(),
+        
+                //Divider
+                HorizontalDividerWithText(
+                  text: CustomStrings.orSignInWith.capitalize!,
+                ),
+                const SizedBox(height: CustomSize.spaceBtwSections),
+                //Social media icons
+                const SocialButtons(),
+              ],
+            ),
           ),
         ),
       ),
