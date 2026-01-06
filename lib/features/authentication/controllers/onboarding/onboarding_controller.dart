@@ -1,4 +1,3 @@
-import 'package:e_commerce/utils/logging/logger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

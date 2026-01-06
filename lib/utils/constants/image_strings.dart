@@ -11,7 +11,7 @@ class ImageStrings {
   static const String facebook = "assets/logos/facebook.png";
 
   //Onboarding images
-  static const String onboardingImg1 = "assets/images/on_boarding_images/choose.gif";
-  static const String onboardingImg2 = "assets/images/on_boarding_images/payment.gif";
-  static const String onboardingImg3 = "assets/images/on_boarding_images/delivery.gif";
+  static const String onboardingAnim1 = "assets/images/on_boarding_images/choose.json";
+  static const String onboardingAnim2 = "assets/images/on_boarding_images/payment.json";
+  static const String onboardingAnim3 = "assets/images/on_boarding_images/delivery.json";
 }

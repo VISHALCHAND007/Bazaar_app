@@ -26,17 +26,17 @@ class OnboardingScreen extends StatelessWidget {
               onPageChanged: controller.updatePageInd,
               children: [
                 OnboardingPage(
-                  image: ImageStrings.onboardingImg1,
+                  lottieAnimationPath: ImageStrings.onboardingAnim1,
                   title: CustomStrings.onBoardingTitle1,
                   subTitle: CustomStrings.onBoardingSubTitle1,
                 ),
                 OnboardingPage(
-                  image: ImageStrings.onboardingImg2,
+                  lottieAnimationPath: ImageStrings.onboardingAnim2,
                   title: CustomStrings.onBoardingTitle2,
                   subTitle: CustomStrings.onBoardingSubTitle2,
                 ),
                 OnboardingPage(
-                  image: ImageStrings.onboardingImg3,
+                  lottieAnimationPath: ImageStrings.onboardingAnim3,
                   title: CustomStrings.onBoardingTitle3,
                   subTitle: CustomStrings.onBoardingSubTitle3,
                 ),

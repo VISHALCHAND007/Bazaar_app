@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../../utils/constants/custom_size.dart';
 import '../../../../../utils/device/device_utility.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({
-    required this.image,
+    required this.lottieAnimationPath,
     required this.title,
     required this.subTitle,
     super.key,
   });
 
-  final String image, title, subTitle;
+  final String lottieAnimationPath, title, subTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +20,8 @@ class OnboardingPage extends StatelessWidget {
       padding: const EdgeInsets.all(CustomSize.defaultSpace),
       child: Column(
         children: [
-          Image(
-            image: AssetImage(image),
+          Lottie.asset(
+            lottieAnimationPath,
             height: DeviceUtility.getScreenHeight(context) * .6,
             width: DeviceUtility.getScreenWidth(context) * .8,
           ),
