@@ -7,7 +7,7 @@ class CustomOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       foregroundColor: Colors.black,
       side: const BorderSide(color: Colors.black),
-      padding: const EdgeInsets.symmetric(vertical: 28),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
   );
@@ -17,7 +17,7 @@ class CustomOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       foregroundColor: Colors.white,
       side: const BorderSide(color: Colors.white),
-      padding: const EdgeInsets.symmetric(vertical: 28),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
   );
