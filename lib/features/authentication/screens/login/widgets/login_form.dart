@@ -1,4 +1,7 @@
+import 'package:e_commerce/features/authentication/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/custom_size.dart';
@@ -30,9 +33,7 @@ class LoginForm extends StatelessWidget {
                 suffixIcon: Icon(Iconsax.eye_slash),
               ),
             ),
-            const SizedBox(
-              height: CustomSize.spaceBtwInputFields / 2,
-            ),
+            const SizedBox(height: CustomSize.spaceBtwInputFields / 2),
 
             //Remember me and forgot password
             Row(
@@ -64,7 +65,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => SignupScreen()),
                 child: Text(CustomStrings.createAccount),
               ),
             ),

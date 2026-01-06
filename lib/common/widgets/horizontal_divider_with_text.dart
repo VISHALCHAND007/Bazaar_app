@@ -1,19 +1,16 @@
+import 'package:e_commerce/utils/helpers/helpers.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants/my_colors.dart';
 
 class HorizontalDividerWithText extends StatelessWidget {
-  final bool isDark;
   final String text;
 
-  const HorizontalDividerWithText({
-    super.key,
-    required this.isDark,
-    required this.text,
-  });
+  const HorizontalDividerWithText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Helpers.isDarkMode(context);
     return Row(
       children: [
         Flexible(
@@ -24,10 +21,7 @@ class HorizontalDividerWithText extends StatelessWidget {
             endIndent: 5,
           ),
         ),
-        Text(
-          text,
-          style: Theme.of(context).textTheme.labelMedium,
-        ),
+        Text(text, style: Theme.of(context).textTheme.labelMedium),
         Flexible(
           child: Divider(
             color: isDark ? MyColors.darkGrey : MyColors.grey,

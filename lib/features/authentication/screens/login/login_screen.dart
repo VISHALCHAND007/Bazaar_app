@@ -33,7 +33,6 @@ class LoginScreen extends StatelessWidget {
 
               //Divider
               HorizontalDividerWithText(
-                isDark: isDark,
                 text: CustomStrings.orSignInWith.capitalize!,
               ),
               const SizedBox(height: CustomSize.spaceBtwSections),
