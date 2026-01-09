@@ -1,7 +1,8 @@
+import 'package:e_commerce/features/authentication/screens/navigation_menu/navigation_menu.dart';
+import 'package:e_commerce/features/authentication/screens/password_validation/forgot_password.dart';
 import 'package:e_commerce/features/authentication/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/custom_size.dart';
@@ -42,13 +43,13 @@ class LoginForm extends StatelessWidget {
                 Row(
                   children: [
                     Checkbox(value: true, onChanged: (value) {}),
-                    Text(CustomStrings.rememberMe),
+                    const Text(CustomStrings.rememberMe),
                   ],
                 ),
                 //forget password
                 TextButton(
-                  onPressed: () {},
-                  child: Text(CustomStrings.forgetPass),
+                  onPressed: () => Get.to(() => const ForgotPassword()),
+                  child: const Text(CustomStrings.forgetPass),
                 ),
               ],
             ),
@@ -57,16 +58,16 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
-                child: Text(CustomStrings.signIn),
+                onPressed: () => Get.off(() => const NavigationMenu()),
+                child: const Text(CustomStrings.signIn),
               ),
             ),
             const SizedBox(height: CustomSize.spaceBtwItems),
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () => Get.to(() => SignupScreen()),
-                child: Text(CustomStrings.createAccount),
+                onPressed: () => Get.to(() => const SignupScreen()),
+                child: const Text(CustomStrings.createAccount),
               ),
             ),
           ],

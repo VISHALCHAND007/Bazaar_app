@@ -39,6 +39,7 @@ class CustomStrings {
   static const String verificationCode = "verification code";
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend email in";
+  static const String done = "Done";
 
   //Authentication headings text
   static const String loginTitle = "Welcome back";
@@ -53,4 +54,9 @@ class CustomStrings {
   static const String emailNotReceivedMsg = "Didn't get the mail? Check your junk/spam or resend it";
   static const String yourAccountCreatedTitle = "Your account is created successfully!";
   static const String yourAccountCreatedSubTitle = "Welcome to Our Ultimate Shopping Destination: Your Account is Created, Unleash the joy of Seamless Online Shopping";
+
+  static const String home = "Home";
+  static const String store = "Store";
+  static const String wishList = "Wishlist";
+  static const String profile = "Profile";
 }

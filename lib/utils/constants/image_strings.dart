@@ -18,4 +18,5 @@ class ImageStrings {
   //animation
   static const String verify = "assets/images/animations/verify.json";
   static const String verifySuccess = "assets/images/animations/verification_success.json";
+  static const String emailSent = "assets/images/animations/email_sent.json";
 }
