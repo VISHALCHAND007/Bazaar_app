@@ -19,15 +19,15 @@ class PrimaryHeaderContainer extends StatelessWidget {
           height: 350,
           child: Stack(
             children: [
-              const Positioned(
+              Positioned(
                 top: -150,
                 right: -250,
-                child: CircularContainer(backgroundColor: MyColors.textWhite),
+                child: CircularContainer(backgroundColor: MyColors.textWhite.withValues(alpha: .1)),
               ),
-              const Positioned(
+              Positioned(
                 top: 100,
                 right: -300,
-                child: CircularContainer(backgroundColor: MyColors.textWhite),
+                child: CircularContainer(backgroundColor: MyColors.textWhite.withValues(alpha: .1)),
               ),
               Positioned(top: 0, left: 0, right: 0, child: child),
             ],
