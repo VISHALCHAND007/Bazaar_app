@@ -1,3 +1,5 @@
+import 'package:e_commerce/common/widgets/layout/grid_layout.dart';
+import 'package:e_commerce/common/widgets/products/products_card/products_card_vertical.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/banner_slider.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_categories.dart';
@@ -13,11 +15,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
         children: [
           //header
-          PrimaryHeaderContainer(
+          const PrimaryHeaderContainer(
             child: Column(
               children: [
                 // App bar
@@ -33,8 +35,10 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          //body
-          Padding(
+          //body::
+
+          //carousel
+          const Padding(
             padding: .all(CustomSize.defaultSpace),
             child: BannerSlider(
               banners: [
@@ -43,6 +47,13 @@ class HomeScreen extends StatelessWidget {
                 ImageStrings.banner3,
               ],
             ),
+          ),
+
+          //popular products
+          GridLayout(
+            itemCount: 2,
+            itemBuilder: (BuildContext _, int index) =>
+                const ProductsCardVertical(),
           ),
         ],
       ),
