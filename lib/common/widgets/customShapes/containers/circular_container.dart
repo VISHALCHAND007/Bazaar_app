@@ -1,40 +1,50 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/custom_size.dart';
 import '../../../../utils/constants/my_colors.dart';
-
+import '../../../../utils/helpers/helpers.dart';
 
 class CircularContainer extends StatelessWidget {
   const CircularContainer({
-    this.height,
-    this.width,
-    this.padding = EdgeInsets.zero,
-    this.margin,
-    this.backgroundColor = MyColors.white,
-    this.child,
-    this.radius = CustomSize.cardRadiusLg,
-    super.key});
+    super.key,
+    required this.imageUrl,
+    this.fit = BoxFit.cover,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.padding = const EdgeInsetsGeometry.all(CustomSize.sm),
+    this.isNetworkImg = false,
+    this.width = 56,
+    this.height = 56,
+  });
 
-  final double? height;
-  final double? width;
-  final double radius;
-  final EdgeInsets padding;
-  final EdgeInsets? margin;
-  final Widget? child;
-  final Color backgroundColor;
+  final String imageUrl;
+  final BoxFit? fit;
+  final Color? backgroundColor, foregroundColor;
+  final EdgeInsetsGeometry? padding;
+  final bool isNetworkImg;
+  final double width, height;
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Helpers.isDarkMode(context);
+
     return Container(
       height: height,
       width: width,
-      margin: margin,
       padding: padding,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius),
-          color: backgroundColor
+        color: backgroundColor ?? (isDark ? MyColors.black : MyColors.white),
+        borderRadius: .circular(max(height, width)),
       ),
-      child: child,
+      child: Center(
+        child: Image(
+          fit: fit,
+          image: isNetworkImg ? NetworkImage(imageUrl) : AssetImage(imageUrl),
+          color: foregroundColor ?? (isDark ? MyColors.white : MyColors.black),
+        ),
+      ),
     );
   }
 }

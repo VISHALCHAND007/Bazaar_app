@@ -20,9 +20,9 @@ class CartIconWithLabel extends StatelessWidget {
       children: [
         IconButton(
           onPressed: onPressedHandler,
-          icon: const Icon(
+          icon: Icon(
             Iconsax.shopping_bag,
-            color: MyColors.white,
+            color: iconColor,
             size: CustomSize.iconMd,
           ),
         ),
@@ -39,7 +39,7 @@ class CartIconWithLabel extends StatelessWidget {
               child: Text(
                 "12",
                 style: Theme.of(context).textTheme.labelLarge!.apply(
-                  color: iconColor,
+                  color: MyColors.white,
                   fontSizeFactor: .8,
                 ),
               ),

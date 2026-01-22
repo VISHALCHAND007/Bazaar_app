@@ -12,7 +12,7 @@ class RoundedImage extends StatelessWidget {
     required this.imageUrl,
     this.applyImageRadius = true,
     this.border,
-    this.backgroundColor = Colors.transparent,
+    this.backgroundColor,
     this.fit,
     this.padding = const EdgeInsetsGeometry.symmetric(horizontal: 10),
     this.isNetworkImage = false,
@@ -24,7 +24,7 @@ class RoundedImage extends StatelessWidget {
   final String imageUrl;
   final bool applyImageRadius;
   final BoxBorder? border;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
   final bool isNetworkImage;

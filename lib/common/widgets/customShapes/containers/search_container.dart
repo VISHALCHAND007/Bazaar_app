@@ -13,12 +13,14 @@ class SearchContainer extends StatelessWidget {
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
     this.showBorder = true, this.onTap,
+    this.padding = const EdgeInsetsGeometry.all(CustomSize.sm),
   });
 
   final String text;
   final IconData? icon;
   final bool showBackground, showBorder;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +29,7 @@ class SearchContainer extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsetsGeometry.symmetric(
-          horizontal: CustomSize.md,
-        ),
+        padding: padding,
         child: Container(
           width: DeviceUtility.getScreenWidth(context),
           padding: const EdgeInsets.all(CustomSize.spaceBtwItems),

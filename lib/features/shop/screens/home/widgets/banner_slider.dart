@@ -4,7 +4,7 @@ import 'package:e_commerce/features/shop/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../common/widgets/customShapes/containers/circular_container.dart';
+import '../../../../../common/widgets/customShapes/containers/rounded_container.dart';
 import '../../../../../utils/constants/custom_size.dart';
 import '../../../../../utils/constants/my_colors.dart';
 
@@ -32,7 +32,7 @@ class BannerSlider extends StatelessWidget {
             mainAxisAlignment: .center,
             children: [
               for (var i = 0; i < banners.length; i++)
-                CircularContainer(
+                RoundedContainer(
                   height: 4,
                   width: 20,
                   margin: const .only(right: 10),

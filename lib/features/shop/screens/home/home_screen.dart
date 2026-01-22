@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:e_commerce/common/widgets/products/products_card/products_card_vertical.dart';
+import 'package:e_commerce/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/banner_slider.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:e_commerce/features/shop/screens/home/widgets/home_categories.dart';
@@ -38,22 +39,28 @@ class HomeScreen extends StatelessWidget {
           //body::
 
           //carousel
-          const Padding(
-            padding: .all(CustomSize.defaultSpace),
-            child: BannerSlider(
-              banners: [
-                ImageStrings.banner1,
-                ImageStrings.banner2,
-                ImageStrings.banner3,
+          Padding(
+            padding: const .all(CustomSize.defaultSpace),
+            child: Column(
+              children: [
+                const BannerSlider(
+                  banners: [
+                    ImageStrings.banner1,
+                    ImageStrings.banner2,
+                    ImageStrings.banner3,
+                  ],
+                ),
+                //popular products
+                SectionHeading(title: "Popular Products", onPressed: () {}),
+                const SizedBox(height: CustomSize.spaceBtwItems),
+
+                GridLayout(
+                  itemCount: 2,
+                  itemBuilder: (BuildContext _, int index) =>
+                      const ProductsCardVertical(),
+                ),
               ],
             ),
-          ),
-
-          //popular products
-          GridLayout(
-            itemCount: 2,
-            itemBuilder: (BuildContext _, int index) =>
-                const ProductsCardVertical(),
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:e_commerce/features/shop/screens/home/home_screen.dart';
+import 'package:e_commerce/features/shop/screens/store/store_screen.dart';
 import 'package:e_commerce/utils/constants/custom_strings.dart';
 import 'package:e_commerce/utils/constants/my_colors.dart';
 import 'package:e_commerce/utils/helpers/helpers.dart';
@@ -59,7 +60,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    Container(color: Colors.blue),
+    const StoreScreen(),
     Container(color: Colors.brown),
     Container(color: Colors.orangeAccent),
   ];

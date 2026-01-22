@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/my_colors.dart';
 import '../curved_edges/curved_edges_widget.dart';
-import 'circular_container.dart';
+import 'rounded_container.dart';
 
 class PrimaryHeaderContainer extends StatelessWidget {
   const PrimaryHeaderContainer({super.key, required this.child});
@@ -22,7 +22,7 @@ class PrimaryHeaderContainer extends StatelessWidget {
               Positioned(
                 top: -150,
                 right: -250,
-                child: CircularContainer(
+                child: RoundedContainer(
                   backgroundColor: MyColors.textWhite.withValues(alpha: .1),
                   height: 400,
                   width: 400,
@@ -32,7 +32,7 @@ class PrimaryHeaderContainer extends StatelessWidget {
               Positioned(
                 top: 100,
                 right: -300,
-                child: CircularContainer(
+                child: RoundedContainer(
                   backgroundColor: MyColors.textWhite.withValues(alpha: .1),
                   height: 400,
                   width: 400,
