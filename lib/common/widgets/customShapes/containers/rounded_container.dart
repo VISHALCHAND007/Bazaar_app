@@ -15,6 +15,7 @@ class RoundedContainer extends StatelessWidget {
     this.showBorder = false,
     this.radius = CustomSize.cardRadiusLg,
     super.key,
+    this.borderColor,
   });
 
   final double? height;
@@ -24,6 +25,7 @@ class RoundedContainer extends StatelessWidget {
   final EdgeInsets? margin;
   final Widget? child;
   final Color backgroundColor;
+  final Color? borderColor;
   final bool showBorder;
 
   @override
@@ -38,9 +40,11 @@ class RoundedContainer extends StatelessWidget {
         color: backgroundColor,
         border: showBorder
             ? Border.all(
-                color: Helpers.isDarkMode(context)
-                    ? MyColors.white
-                    : MyColors.grey,
+                color:
+                    borderColor ??
+                    (Helpers.isDarkMode(context)
+                        ? MyColors.white
+                        : MyColors.grey),
                 width: 1,
               )
             : null,
