@@ -26,7 +26,7 @@ class SearchContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Helpers.isDarkMode(context);
 
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding: padding,

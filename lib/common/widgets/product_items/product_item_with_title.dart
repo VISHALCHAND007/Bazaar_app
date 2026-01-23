@@ -23,7 +23,7 @@ class ProductWithTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Helpers.isDarkMode(context);
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsetsGeometry.only(right: CustomSize.spaceBtwItems),
