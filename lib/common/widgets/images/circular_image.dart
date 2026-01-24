@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constants/custom_size.dart';
 
-
 class CircularImage extends StatelessWidget {
   const CircularImage({
     super.key,
@@ -17,6 +16,7 @@ class CircularImage extends StatelessWidget {
     this.isNetworkImage = false,
     this.onTap,
     this.borderRadius = CustomSize.md,
+    this.foregroundColor,
   });
 
   final double? height, width;
@@ -29,6 +29,7 @@ class CircularImage extends StatelessWidget {
   final bool isNetworkImage;
   final VoidCallback? onTap;
   final double borderRadius;
+  final Color? foregroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,7 @@ class CircularImage extends StatelessWidget {
           borderRadius: applyImageRadius ? .circular(borderRadius) : .zero,
           child: Image(
             fit: fit,
+            color: foregroundColor,
             image: isNetworkImage
                 ? NetworkImage(imageUrl)
                 : AssetImage(imageUrl),
