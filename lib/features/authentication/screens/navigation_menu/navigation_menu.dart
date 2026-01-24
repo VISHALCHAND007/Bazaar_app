@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/personalization/screens/settings/settings.dart';
 import 'package:e_commerce/features/shop/screens/home/home_screen.dart';
 import 'package:e_commerce/features/shop/screens/store/store_screen.dart';
 import 'package:e_commerce/features/shop/screens/wishlist/wish_list_screen.dart';
@@ -59,10 +60,10 @@ class NavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
-  final screens = [
-    const HomeScreen(),
-    const StoreScreen(),
-    const WishListScreen(),
-    Container(color: Colors.orangeAccent),
+  final screens = const [
+    HomeScreen(),
+    StoreScreen(),
+    WishListScreen(),
+    SettingsScreen(),
   ];
 }

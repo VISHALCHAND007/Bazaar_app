@@ -14,7 +14,7 @@ class Helpers {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(ctx).pop(),
-              child: Text("OK"),
+              child: const Text("OK"),
             ),
           ],
         );

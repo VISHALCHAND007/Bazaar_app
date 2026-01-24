@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce/common/widgets/images/rounded_image.dart';
+import 'package:e_commerce/common/widgets/images/circular_image.dart';
 import 'package:e_commerce/features/shop/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +24,7 @@ class BannerSlider extends StatelessWidget {
             viewportFraction: .85,
             onPageChanged: (ind, _) => controller.updateCarousalInd(ind),
           ),
-          items: banners.map((url) => RoundedImage(imageUrl: url, fit: .cover,)).toList(),
+          items: banners.map((url) => CircularImage(imageUrl: url, fit: .cover,)).toList(),
         ),
         const SizedBox(height: CustomSize.spaceBtwItems),
         Obx(

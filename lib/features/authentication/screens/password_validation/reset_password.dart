@@ -2,7 +2,6 @@ import 'package:e_commerce/utils/constants/custom_size.dart';
 import 'package:e_commerce/utils/constants/custom_strings.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/device/device_utility.dart';
-import 'package:e_commerce/utils/helpers/helpers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

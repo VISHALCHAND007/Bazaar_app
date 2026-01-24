@@ -1,6 +1,6 @@
 import 'package:e_commerce/common/styles/shadows.dart';
 import 'package:e_commerce/common/widgets/customShapes/containers/rounded_container.dart';
-import 'package:e_commerce/common/widgets/images/rounded_image.dart';
+import 'package:e_commerce/common/widgets/images/circular_image.dart';
 import 'package:e_commerce/common/widgets/texts/product_title_text.dart';
 import 'package:e_commerce/utils/constants/custom_size.dart';
 import 'package:e_commerce/utils/constants/my_colors.dart';
@@ -42,7 +42,7 @@ class ProductsCardVertical extends StatelessWidget {
                 children: [
                   //Image
                   const Center(
-                    child: RoundedImage(imageUrl: ImageStrings.productImage1),
+                    child: CircularImage(imageUrl: ImageStrings.productImage1),
                   ),
 
                   //Sale tag

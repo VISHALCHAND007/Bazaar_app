@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/custom_size.dart';
-import '../../../utils/constants/my_colors.dart';
 
 
-class RoundedImage extends StatelessWidget {
-  const RoundedImage({
+class CircularImage extends StatelessWidget {
+  const CircularImage({
     super.key,
     this.height,
     this.width = .infinity,

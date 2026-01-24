@@ -13,35 +13,31 @@ class PrimaryHeaderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return CurvedEdgesWidget(
       child: Container(
-        padding: const EdgeInsets.all(0),
         color: MyColors.primary,
-        child: SizedBox(
-          height: 350,
-          child: Stack(
-            children: [
-              Positioned(
-                top: -150,
-                right: -250,
-                child: RoundedContainer(
-                  backgroundColor: MyColors.textWhite.withValues(alpha: .1),
-                  height: 400,
-                  width: 400,
-                  radius: 200,
-                ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: -150,
+              right: -250,
+              child: RoundedContainer(
+                backgroundColor: MyColors.textWhite.withValues(alpha: .1),
+                height: 400,
+                width: 400,
+                radius: 200,
               ),
-              Positioned(
-                top: 100,
-                right: -300,
-                child: RoundedContainer(
-                  backgroundColor: MyColors.textWhite.withValues(alpha: .1),
-                  height: 400,
-                  width: 400,
-                  radius: 200,
-                ),
+            ),
+            Positioned(
+              top: 100,
+              right: -300,
+              child: RoundedContainer(
+                backgroundColor: MyColors.textWhite.withValues(alpha: .1),
+                height: 400,
+                width: 400,
+                radius: 200,
               ),
-              Positioned(top: 0, left: 0, right: 0, child: child),
-            ],
-          ),
+            ),
+            child
+          ],
         ),
       ),
     );
