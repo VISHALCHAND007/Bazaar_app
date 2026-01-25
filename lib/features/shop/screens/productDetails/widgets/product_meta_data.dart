@@ -51,7 +51,7 @@ class ProductMetaData extends StatelessWidget {
         ),
         const SizedBox(height: CustomSize.spaceBtwItems / 2),
 
-        //Product description
+        //Product title
         const ProductTitleText(title: "Green Nike shoes."),
         const SizedBox(height: CustomSize.spaceBtwItems / 2),
 

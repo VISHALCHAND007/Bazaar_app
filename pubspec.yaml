@@ -33,6 +33,7 @@ dependencies:
   smooth_page_indicator: ^2.0.1
   lottie: ^3.3.2
   carousel_slider: ^5.1.1
+  readmore: ^3.0.0
 
 dev_dependencies:
   flutter_test:

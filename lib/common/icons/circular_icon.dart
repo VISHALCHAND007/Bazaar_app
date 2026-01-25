@@ -27,14 +27,16 @@ class CircularIcon extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: Helpers.isDarkMode(context)
-            ? MyColors.black.withValues(alpha: .9)
-            : MyColors.white.withValues(alpha: .9),
+        color:
+            backgroundColor ??
+            (Helpers.isDarkMode(context)
+                ? MyColors.black.withValues(alpha: .9)
+                : MyColors.white.withValues(alpha: .9)),
         borderRadius: .circular(100),
       ),
       child: IconButton(
         onPressed: () {},
-        icon: Icon(icon, size: size,),
+        icon: Icon(icon, size: size),
         color: selectedColor,
       ),
     );

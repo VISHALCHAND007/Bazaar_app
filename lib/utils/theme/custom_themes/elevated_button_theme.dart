@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constants/my_colors.dart';
+
 class CustomElevatedButtonTheme {
   CustomElevatedButtonTheme._();
 
@@ -7,10 +9,10 @@ class CustomElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: Colors.blue,
+      backgroundColor: MyColors.primary,
       disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.grey,
-      side: const BorderSide(color: Colors.blue),
+      side: const BorderSide(color: MyColors.primary),
       padding: const EdgeInsets.symmetric(vertical: 15),
       textStyle: const TextStyle().copyWith(
         fontSize: 16,
@@ -25,10 +27,10 @@ class CustomElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: Colors.blue,
+      backgroundColor: MyColors.primary,
       disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.grey,
-      side: const BorderSide(color: Colors.blue),
+      side: const BorderSide(color: MyColors.primary),
       padding: const EdgeInsets.symmetric(vertical: 15),
       textStyle: const TextStyle().copyWith(
         fontSize: 16,

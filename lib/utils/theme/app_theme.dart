@@ -1,3 +1,4 @@
+import 'package:e_commerce/utils/constants/my_colors.dart';
 import 'package:e_commerce/utils/theme/custom_themes/app_bar_theme.dart';
 import 'package:e_commerce/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:e_commerce/utils/theme/custom_themes/check_box_theme.dart';
@@ -14,8 +15,8 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     fontFamily: "poppins",
-    scaffoldBackgroundColor: Colors.white,
-    primaryColor: Colors.blue,
+    scaffoldBackgroundColor: MyColors.white,
+    primaryColor: MyColors.primary,
     brightness: .light,
     textTheme: MyTextTheme.lightTextTheme,
     elevatedButtonTheme: CustomElevatedButtonTheme.lightElevatedTheme,
@@ -32,8 +33,8 @@ class AppTheme {
     useMaterial3: true,
     brightness: .dark,
     fontFamily: "poppins",
-    primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.black54,
+    primaryColor: MyColors.primary,
+    scaffoldBackgroundColor: MyColors.dark,
     textTheme: MyTextTheme.dartTextTheme,
     elevatedButtonTheme: CustomElevatedButtonTheme.dartElevatedTheme,
     appBarTheme: CustomAppBarTheme.darkAppBarTheme,

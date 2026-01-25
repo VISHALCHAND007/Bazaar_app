@@ -19,16 +19,15 @@ class SectionHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: .spaceBetween,
       children: [
-        Expanded(
-          child: Text(
-            title,
-            style: Theme.of(
-              context,
-            ).textTheme.headlineSmall!.apply(color: textColor),
-            maxLines: 1,
-            overflow: .ellipsis,
-          ),
+        Text(
+          title,
+          style: Theme.of(
+            context,
+          ).textTheme.headlineSmall!.apply(color: textColor),
+          maxLines: 1,
+          overflow: .ellipsis,
         ),
         if (showActionBtn)
           TextButton(onPressed: onPressed, child: Text(buttonTitle)),
