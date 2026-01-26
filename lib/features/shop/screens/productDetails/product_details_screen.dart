@@ -5,7 +5,6 @@ import 'package:e_commerce/features/shop/screens/productDetails/widgets/product_
 import 'package:e_commerce/features/shop/screens/productDetails/widgets/product_variation.dart';
 import 'package:e_commerce/features/shop/screens/productDetails/widgets/rating_and_share.dart';
 import 'package:e_commerce/features/shop/screens/productReviews/product_reviews_screen.dart';
-import 'package:e_commerce/utils/device/device_utility.dart';
 import 'package:e_commerce/utils/helpers/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -114,7 +113,7 @@ class ProductDetailsScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: AddToCardBottom(),
+      bottomNavigationBar: const AddToCardBottom(),
     );
   }
 }

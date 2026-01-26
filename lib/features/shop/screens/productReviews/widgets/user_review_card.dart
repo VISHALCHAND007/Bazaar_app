@@ -3,11 +3,9 @@ import 'package:e_commerce/common/widgets/products/rating/custom_rating_indicato
 import 'package:e_commerce/utils/constants/my_colors.dart';
 import 'package:e_commerce/utils/helpers/helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../../utils/constants/custom_size.dart';
-import '../../../../../utils/constants/image_strings.dart';
 
 class UserReviewCard extends StatelessWidget {
   const UserReviewCard({super.key, required this.userImg});
