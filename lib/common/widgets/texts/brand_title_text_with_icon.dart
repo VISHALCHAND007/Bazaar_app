@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/custom_size.dart';
 import '../../../utils/constants/enums.dart';
@@ -10,7 +11,7 @@ class BrandTitleWithIcon extends StatelessWidget {
   const BrandTitleWithIcon({
     super.key,
     required this.title,
-    required this.icon,
+    this.icon = Iconsax.verify5,
     this.iconColor = MyColors.primary,
     this.iconSize = CustomSize.iconXs,
     this.textColor,

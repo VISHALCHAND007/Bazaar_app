@@ -1,4 +1,6 @@
+import 'package:e_commerce/features/shop/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../common/widgets/appbar/custom_app_bar.dart';
 import '../../../../../common/widgets/products/cart/cart_icon_with_label.dart';
@@ -36,7 +38,7 @@ class HomeAppbar extends StatelessWidget {
           actions: [
             CartIconWithLabel(
               iconColor: MyColors.white,
-              onPressedHandler: () {},
+              onPressedHandler: () => Get.to(() => const CartScreen()),
             ),
           ],
         ),
