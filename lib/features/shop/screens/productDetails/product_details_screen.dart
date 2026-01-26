@@ -4,9 +4,11 @@ import 'package:e_commerce/features/shop/screens/productDetails/widgets/product_
 import 'package:e_commerce/features/shop/screens/productDetails/widgets/product_meta_data.dart';
 import 'package:e_commerce/features/shop/screens/productDetails/widgets/product_variation.dart';
 import 'package:e_commerce/features/shop/screens/productDetails/widgets/rating_and_share.dart';
+import 'package:e_commerce/features/shop/screens/productReviews/product_reviews_screen.dart';
 import 'package:e_commerce/utils/device/device_utility.dart';
 import 'package:e_commerce/utils/helpers/helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
@@ -96,7 +98,7 @@ class ProductDetailsScreen extends StatelessWidget {
                             showActionBtn: false,
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () => Get.to(() => const ProductReviewsScreen()),
                             icon: const Icon(
                               Iconsax.arrow_right_3,
                               size: CustomSize.iconSm,

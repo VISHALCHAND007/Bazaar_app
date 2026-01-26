@@ -69,4 +69,6 @@ class ImageStrings {
 
   //Profile
   static const String user = "assets/images/content/user.png";
+  static const String reviewUser = "assets/images/user/gettyimages.jpg";
+  static const String reviewUser2 = "assets/images/user/gettyimages-1357723739-612x612.jpg";
 }
