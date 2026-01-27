@@ -3,6 +3,8 @@ import 'package:e_commerce/common/widgets/customShapes/containers/custom_header_
 import 'package:e_commerce/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce/features/personalization/screens/address/addresses.dart';
+import 'package:e_commerce/features/shop/screens/cart/cart_screen.dart';
+import 'package:e_commerce/features/shop/screens/orders/orders_screen.dart';
 import 'package:e_commerce/utils/constants/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -62,34 +64,36 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: "Set shopping delivery address",
                     onTap: () => Get.to(() => const AddressesScreen()),
                   ),
-                  const SettingsMenuTile(
+                  SettingsMenuTile(
                     icon: Iconsax.shopping_cart,
-                    title: "My Address",
+                    title: "My Cart",
                     subTitle: "Add, remove products and move to checkout",
+                    onTap: () => Get.to(() => const CartScreen()),
                   ),
-                  const SettingsMenuTile(
+                  SettingsMenuTile(
                     icon: Iconsax.bag_tick,
-                    title: "My Address",
+                    title: "My Orders",
                     subTitle: "In-progress and completed orders",
+                    onTap: () => Get.to(() => const OrdersScreen()),
                   ),
                   const SettingsMenuTile(
                     icon: Iconsax.bank,
-                    title: "My Address",
+                    title: "Bank Account",
                     subTitle: "Withdraw balance to registered account",
                   ),
                   const SettingsMenuTile(
                     icon: Iconsax.discount_shape,
-                    title: "My Address",
+                    title: "My Coupons",
                     subTitle: "List of all the discounted coupons",
                   ),
                   const SettingsMenuTile(
                     icon: Iconsax.notification,
-                    title: "My Address",
+                    title: "Notifications",
                     subTitle: "Set any kind of notification message",
                   ),
                   const SettingsMenuTile(
                     icon: Iconsax.security_card,
-                    title: "My Address",
+                    title: "Account Privacy",
                     subTitle: "Manage data usage and connected accounts",
                   ),
                   const SizedBox(height: CustomSize.spaceBtwSections),
