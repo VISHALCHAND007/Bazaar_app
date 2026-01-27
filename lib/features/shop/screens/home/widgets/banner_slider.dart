@@ -24,7 +24,7 @@ class BannerSlider extends StatelessWidget {
             viewportFraction: .85,
             onPageChanged: (ind, _) => controller.updateCarousalInd(ind),
           ),
-          items: banners.map((url) => CircularImage(imageUrl: url, fit: .cover,)).toList(),
+          items: banners.map((url) => RoundedImage(imageUrl: url, fit: .cover,)).toList(),
         ),
         const SizedBox(height: CustomSize.spaceBtwItems),
         Obx(

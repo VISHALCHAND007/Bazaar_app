@@ -26,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: .stretch,
               children: [
                 //Profile
-                const CircularImage(
+                const RoundedImage(
                   imageUrl: ImageStrings.user,
                   width: 80,
                   height: 80,

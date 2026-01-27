@@ -13,7 +13,7 @@ class UserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const CircularImage(
+      leading: const RoundedImage(
         imageUrl: ImageStrings.user,
         height: 56,
         width: 56,

@@ -68,7 +68,7 @@ class ProductMetaData extends StatelessWidget {
         //Brand
         Row(
           children: [
-            CircularImage(
+            RoundedImage(
               imageUrl: ImageStrings.cosmeticsIcon,
               height: CustomSize.iconLg,
               width: CustomSize.iconLg,

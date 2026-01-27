@@ -1,4 +1,6 @@
+import 'package:e_commerce/features/shop/screens/subCategories/sub_categories_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../common/widgets/product_items/product_item_with_title.dart';
 import '../../../../../common/widgets/texts/section_heading.dart';
@@ -38,7 +40,7 @@ class HomeCategories extends StatelessWidget {
               itemBuilder: (_, ind) => ProductWithTitle(
                 title: "Pixel 19 pro",
                 image: ImageStrings.facebook,
-                onTap: () {},
+                onTap: () => Get.to(() => const SubCategoriesScreen()),
               ),
             ),
           ),

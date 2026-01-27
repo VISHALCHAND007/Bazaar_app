@@ -44,7 +44,7 @@ class ProductsCardVertical extends StatelessWidget {
                 children: [
                   //Image
                   const Center(
-                    child: CircularImage(imageUrl: ImageStrings.productImage1),
+                    child: RoundedImage(imageUrl: ImageStrings.productImage1),
                   ),
 
                   //Sale tag

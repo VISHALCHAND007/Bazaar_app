@@ -55,7 +55,7 @@ class ProductImageSlider extends StatelessWidget {
                   separatorBuilder: (_, _) =>
                       const SizedBox(width: CustomSize.spaceBtwItems),
                   itemCount: 6,
-                  itemBuilder: (_, ind) => CircularImage(
+                  itemBuilder: (_, ind) => RoundedImage(
                     width: 80,
                     border: Border.all(color: MyColors.primary),
                     padding: const .all(CustomSize.sm),
