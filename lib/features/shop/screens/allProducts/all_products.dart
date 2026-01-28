@@ -1,9 +1,7 @@
 import 'package:e_commerce/common/widgets/appbar/custom_app_bar.dart';
-import 'package:e_commerce/common/widgets/layout/grid_layout.dart';
-import 'package:e_commerce/common/widgets/products/products_card/products_card_vertical.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
+import '../../../../common/widgets/products/sortable/sortable_products.dart';
 import '../../../../utils/constants/custom_size.dart';
 
 class AllProducts extends StatelessWidget {
@@ -11,46 +9,17 @@ class AllProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
-        appBar: const CustomAppBar(
+        appBar: CustomAppBar(
           title: Text("Popular Products"),
           shouldShowBackBtn: true,
         ),
 
         body: SingleChildScrollView(
           child: Padding(
-            padding: const .all(CustomSize.defaultSpace),
-            child: Column(
-              children: [
-                DropdownButtonFormField(
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Iconsax.sort)
-                  ),
-                  items:
-                      [
-                            "Name",
-                            "Higher Price",
-                            "Lower Price",
-                            "Sale",
-                            "Newest",
-                            "Popularity",
-                          ]
-                          .map(
-                            (value) => DropdownMenuItem(
-                              value: value,
-                              child: Text(value),
-                            ),
-                          )
-                          .toList(),
-                  onChanged: (value) {},
-                ),
-                const SizedBox(height: CustomSize.spaceBtwSections,),
-
-                //Products of this type
-                GridLayout(itemCount: 12, itemBuilder: (_, ind) => const ProductsCardVertical())
-              ],
-            ),
+            padding: .all(CustomSize.defaultSpace),
+            child: SortableProducts(),
           ),
         ),
       ),

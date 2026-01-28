@@ -4,9 +4,11 @@ import 'package:e_commerce/common/widgets/customShapes/containers/search_contain
 import 'package:e_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:e_commerce/common/widgets/products/cart/cart_icon_with_label.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/shop/screens/brands/all_brands.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/category_tabs.dart';
 import 'package:e_commerce/utils/helpers/helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/brands/brand_card.dart';
 import '../../../../utils/constants/custom_size.dart';
@@ -67,14 +69,14 @@ class StoreScreen extends StatelessWidget {
                       //featured brands
                       SectionHeading(
                         title: "Featured Brands",
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const AllBrands()),
                       ),
                       const SizedBox(height: CustomSize.spaceBtwItems / 2),
 
                       GridLayout(
                         itemCount: 4,
                         mainAxisExtent: 80,
-                        itemBuilder: (_, ind) => const BrandCard(),
+                        itemBuilder: (_, ind) => BrandCard(onTap: () {},),
                       ),
                     ],
                   ),

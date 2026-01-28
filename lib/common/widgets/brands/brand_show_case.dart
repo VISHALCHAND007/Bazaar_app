@@ -22,7 +22,7 @@ class BrandShowCase extends StatelessWidget {
       child: Column(
         children: [
           //brand with product cound
-          const BrandCard(),
+          BrandCard(onTap: () {  },),
           const SizedBox(height: CustomSize.spaceBtwItems),
 
           // top 3 products of brand

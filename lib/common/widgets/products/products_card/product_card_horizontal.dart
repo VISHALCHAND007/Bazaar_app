@@ -1,5 +1,4 @@
 import 'package:e_commerce/common/icons/circular_icon.dart';
-import 'package:e_commerce/common/styles/shadows.dart';
 import 'package:e_commerce/common/widgets/customShapes/containers/rounded_container.dart';
 import 'package:e_commerce/common/widgets/images/circular_image.dart';
 import 'package:e_commerce/common/widgets/texts/brand_title_text_with_icon.dart';
@@ -89,9 +88,9 @@ class ProductCardHorizontal extends StatelessWidget {
                   mainAxisSize: .min,
                   crossAxisAlignment: .start,
                   children: [
-                    ProductTitleText(title: "Nike Sneakers with Extra in-soul's", showSmallSize: true,),
+                    const ProductTitleText(title: "Nike Sneakers with Extra in-soul's", showSmallSize: true,),
                     const SizedBox(height: CustomSize.spaceBtwItems / 2),
-                    BrandTitleWithIcon(title: "Nike", textSize: .small,),
+                    const BrandTitleWithIcon(title: "Nike", textSize: .small,),
       
                     ///to make the bottom widget appear at the very bottom
                     const Spacer(),
@@ -101,18 +100,18 @@ class ProductCardHorizontal extends StatelessWidget {
                         mainAxisAlignment: .spaceBetween,
                         children: [
                           //Price
-                          Expanded(child: ProductPriceText(price: "234", isLarge: false,)),
+                          const Expanded(child: ProductPriceText(price: "234", isLarge: false,)),
       
                           //cart button
                           Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: MyColors.dark,
                               borderRadius: .only(
                                 topLeft: .circular(CustomSize.cardRadiusMd),
                                 bottomRight: .circular(CustomSize.productImageRadius),
                               ),
                             ),
-                            child: SizedBox(
+                            child: const SizedBox(
                               height: CustomSize.iconLg * 1.2,
                               width: CustomSize.iconLg * 1.2,
                               child: Icon(Iconsax.add, color: Colors.white),
