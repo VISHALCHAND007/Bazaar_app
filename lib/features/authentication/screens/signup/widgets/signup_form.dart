@@ -1,18 +1,24 @@
 import 'package:e_commerce/utils/helpers/helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/custom_size.dart';
 import '../../../../../utils/constants/custom_strings.dart';
 import '../../../../../utils/constants/my_colors.dart';
+import '../../../controllers/signup/signup_controller.dart';
 
 class SignupForm extends StatelessWidget {
   const SignupForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
+
     final isDark = Helpers.isDarkMode(context);
     return Form(
+      key: controller.signUpFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: CustomSize.spaceBtwSections,
@@ -23,6 +29,7 @@ class SignupForm extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFormField(
+                    controller: controller.firstName,
                     expands: false,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.user),
@@ -33,6 +40,7 @@ class SignupForm extends StatelessWidget {
                 const SizedBox(width: CustomSize.spaceBtwInputFields),
                 Expanded(
                   child: TextFormField(
+                    controller: controller.lastName,
                     expands: false,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.user),
@@ -44,6 +52,7 @@ class SignupForm extends StatelessWidget {
             ),
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
+              controller: controller.username,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.user_edit),
                 labelText: CustomStrings.userName,
@@ -51,6 +60,7 @@ class SignupForm extends StatelessWidget {
             ),
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
+              controller: controller.email,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.mail_lock_outlined),
                 labelText: CustomStrings.email,
@@ -58,6 +68,7 @@ class SignupForm extends StatelessWidget {
             ),
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
+              controller: controller.phoneNumber,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.call),
                 labelText: CustomStrings.phoneNo,
@@ -65,6 +76,7 @@ class SignupForm extends StatelessWidget {
             ),
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
+              controller: controller.password,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Iconsax.password_check),
                 labelText: CustomStrings.password,

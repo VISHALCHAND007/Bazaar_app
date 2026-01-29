@@ -7,11 +7,15 @@ import 'package:e_commerce/utils/constants/custom_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/signup/signup_controller.dart';
+
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
+
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -35,7 +39,7 @@ class SignupScreen extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () => Get.to(() => const VerifyEmail()),
+                    onPressed: () => controller.signup(),
                     child: const Text(CustomStrings.createAccount),
                   ),
                 ),
