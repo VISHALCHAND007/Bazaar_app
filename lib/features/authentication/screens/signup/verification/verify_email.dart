@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/styles/spacing_style.dart';
 import 'package:e_commerce/common/widgets/success_screen.dart';
+import 'package:e_commerce/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_commerce/features/authentication/controllers/signup/verify_email_controller.dart';
 import 'package:e_commerce/features/authentication/screens/login/login_screen.dart';
 import 'package:e_commerce/utils/constants/custom_strings.dart';
@@ -26,7 +27,7 @@ class VerifyEmail extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Get.offAll(() => const LoginScreen()),
+            onPressed: () => AuthenticationRepository.instance.logout(),
             icon: const Icon(Iconsax.close_circle, size: CustomSize.iconMd),
           ),
         ],
@@ -67,15 +68,7 @@ class VerifyEmail extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () => Get.to(
-                      () => SuccessScreen(
-                        onButtonClicked: () =>
-                            Get.to(() => const LoginScreen()),
-                        title: CustomStrings.yourAccountCreatedTitle,
-                        subTitle: CustomStrings.yourAccountCreatedSubTitle,
-                        animationPath: ImageStrings.verifySuccess,
-                      ),
-                    ),
+                    onPressed: () => controller.checkEmailVerificationStatus(),
                     child: const Text(CustomStrings.myContinue),
                   ),
                 ),
@@ -83,7 +76,7 @@ class VerifyEmail extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => controller.sendEmailForVerification(),
                     child: const Text(CustomStrings.resendEmail),
                   ),
                 ),

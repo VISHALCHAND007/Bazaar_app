@@ -1,5 +1,7 @@
 import 'package:e_commerce/features/authentication/screens/login/login_screen.dart';
+import 'package:e_commerce/features/authentication/screens/navigation_menu/navigation_menu.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding/onboarding_screen.dart';
+import 'package:e_commerce/features/authentication/screens/signup/verification/verify_email.dart';
 import 'package:e_commerce/utils/constants/storage_keys.dart';
 import 'package:e_commerce/utils/exceptions/exports.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,12 +27,22 @@ class AuthenticationRepository extends GetxController {
   }
 
   void screenRedirect() async {
-    deviceStorage.writeIfNull(StorageKeys.isFirstTime, true);
+    final user = _auth.currentUser;
+    if (user != null) {
+      if (user.emailVerified) {
+        // ignore: prefer_const_constructors
+        Get.offAll(() => NavigationMenu());
+      } else {
+        Get.offAll(() => VerifyEmail(email: user.email));
+      }
+    } else {
+      deviceStorage.writeIfNull(StorageKeys.isFirstTime, true);
 
-    //checking
-    deviceStorage.read(StorageKeys.isFirstTime) != true
-        ? Get.to(() => const LoginScreen())
-        : Get.to(() => const OnboardingScreen());
+      //checking
+      deviceStorage.read(StorageKeys.isFirstTime) != true
+          ? Get.to(() => const LoginScreen())
+          : Get.to(() => const OnboardingScreen());
+    }
   }
 
   /*----------------E-mail & passwork sign in----------------*/
@@ -83,5 +95,20 @@ class AuthenticationRepository extends GetxController {
 
   //facebook
   /*----------------logout----------------*/
+  Future<void> logout() async{
+    try {
+      await _auth.signOut();
+    }on FirebaseAuthException catch (e) {
+      throw CustomFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw CustomFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw const CustomFormatException();
+    } on PlatformException catch (e) {
+      throw CustomPlatformException(e.code).message;
+    } catch(e) {
+      throw "Something went wrong. Please try again later.";
+    }
+  }
   /*----------------delete use----------------*/
 }
