@@ -22,6 +22,7 @@ class ImageStrings {
   static const String verifySuccess =
       "assets/images/animations/verification_success.json";
   static const String emailSent = "assets/images/animations/email_sent.json";
+  static const String processing = "assets/images/animations/processing.json";
 
   //Category
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";

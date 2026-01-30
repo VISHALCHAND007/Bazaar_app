@@ -1,3 +1,4 @@
+import 'package:e_commerce/bindings/general_bindings.dart';
 import 'package:e_commerce/firebase_options.dart';
 import 'package:e_commerce/utils/constants/my_colors.dart';
 import 'package:e_commerce/utils/theme/app_theme.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       themeMode: .system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
+      initialBinding: GeneralBindings(),
       // home: const OnboardingScreen(),
       home: const Scaffold(
         backgroundColor: MyColors.primary,

@@ -1,7 +1,10 @@
 import 'package:e_commerce/utils/helpers/helpers.dart';
+import 'package:e_commerce/utils/validators/validator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/custom_size.dart';
@@ -30,6 +33,8 @@ class SignupForm extends StatelessWidget {
                 Expanded(
                   child: TextFormField(
                     controller: controller.firstName,
+                    validator: (value) =>
+                        Validator.validateEmptyField("First name", value),
                     expands: false,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.user),
@@ -41,6 +46,8 @@ class SignupForm extends StatelessWidget {
                 Expanded(
                   child: TextFormField(
                     controller: controller.lastName,
+                    validator: (value) =>
+                        Validator.validateEmptyField("Last name", value),
                     expands: false,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.user),
@@ -53,6 +60,8 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
               controller: controller.username,
+              validator: (value) =>
+                  Validator.validateEmptyField("Username", value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.user_edit),
                 labelText: CustomStrings.userName,
@@ -61,6 +70,7 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
               controller: controller.email,
+              validator: (value) => Validator.validateEmail(value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.mail_lock_outlined),
                 labelText: CustomStrings.email,
@@ -69,20 +79,30 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: CustomSize.spaceBtwItems),
             TextFormField(
               controller: controller.phoneNumber,
+              validator: (value) => Validator.validatePhoneNumber(value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.call),
                 labelText: CustomStrings.phoneNo,
               ),
             ),
             const SizedBox(height: CustomSize.spaceBtwItems),
-            TextFormField(
-              controller: controller.password,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Iconsax.password_check),
-                labelText: CustomStrings.password,
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Iconsax.eye_slash),
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                obscureText: controller.hidePassword.value,
+                validator: (value) => Validator.validatePassword(value),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  labelText: CustomStrings.password,
+                  suffixIcon: IconButton(
+                    onPressed: () => controller.hidePassword.value =
+                        !controller.hidePassword.value,
+                    icon: Icon(
+                      controller.hidePassword.value
+                          ? Iconsax.eye_slash
+                          : Iconsax.eye,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -93,7 +113,13 @@ class SignupForm extends StatelessWidget {
                 SizedBox(
                   height: 24,
                   width: 24,
-                  child: Checkbox(value: true, onChanged: (value) {}),
+                  child: Obx(
+                    () => Checkbox(
+                      value: controller.privacyPolicy.value,
+                      onChanged: (value) => controller.privacyPolicy.value =
+                          !controller.privacyPolicy.value,
+                    ),
+                  ),
                 ),
                 const SizedBox(width: CustomSize.spaceBtwItems),
                 Text.rich(

@@ -22,7 +22,7 @@ class Validator {
 
   static String? validatePassword(String? value) {
     if(value == null || value.isEmpty){
-      return "Password si required";
+      return "Password is required";
     }
     if(value.length < 6) {
       return "Password must be atleast 6 characters long.";
@@ -32,7 +32,7 @@ class Validator {
       return "Password must contain at least one uppercase letter.";
     }
     //checks for numbers
-    if(!value.contains(RegExp(r"0-9"))) {
+    if(!value.contains(RegExp(r"[0-9]"))) {
       return "Password must contain at least one number.";
     }
     //checks for special characters
