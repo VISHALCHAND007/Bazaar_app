@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/styles/spacing_style.dart';
 import 'package:e_commerce/common/widgets/success_screen.dart';
+import 'package:e_commerce/features/authentication/controllers/signup/verify_email_controller.dart';
 import 'package:e_commerce/features/authentication/screens/login/login_screen.dart';
 import 'package:e_commerce/utils/constants/custom_strings.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
@@ -12,10 +13,14 @@ import 'package:lottie/lottie.dart';
 import '../../../../../utils/constants/custom_size.dart';
 
 class VerifyEmail extends StatelessWidget {
-  const VerifyEmail({super.key});
+  const VerifyEmail({super.key, this.email});
+
+  final String? email;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(VerifyEmailController());
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -46,7 +51,7 @@ class VerifyEmail extends StatelessWidget {
                 ),
                 const SizedBox(height: CustomSize.spaceBtwItems),
                 Text(
-                  "support@meals.com",
+                  email ?? "",
                   style: Theme.of(context).textTheme.labelSmall,
                   textAlign: .center,
                 ),
