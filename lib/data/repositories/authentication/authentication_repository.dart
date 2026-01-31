@@ -9,14 +9,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
-import '../../../utils/exceptions/firebase_auth_exceptions.dart';
-import '../../../utils/exceptions/firebase_exceptions.dart';
-import '../../../utils/exceptions/format_exceptions.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
   final _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   final deviceStorage = GetStorage();
 
@@ -83,7 +81,7 @@ class AuthenticationRepository extends GetxController {
       throw CustomFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
       throw CustomFirebaseException(e.code).message;
-    } on FormatException catch (e) {
+    } on FormatException catch (_) {
       throw const CustomFormatException();
     } on PlatformException catch (e) {
       throw CustomPlatformException(e.code).message;
@@ -100,7 +98,7 @@ class AuthenticationRepository extends GetxController {
       throw CustomFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
       throw CustomFirebaseException(e.code).message;
-    } on FormatException catch (e) {
+    } on FormatException catch (_) {
       throw const CustomFormatException();
     } on PlatformException catch (e) {
       throw CustomPlatformException(e.code).message;
@@ -114,17 +112,46 @@ class AuthenticationRepository extends GetxController {
 
   /*----------------Social sign in----------------*/
   //google
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      //get user options
+      final GoogleSignInAccount? userAccount = await _googleSignIn.signIn();
+
+      //get the authentication
+      final googleAuth = await userAccount?.authentication;
+
+      //get the credentials
+      final credentials = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      //using credentials signin
+      return await _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw CustomFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw CustomFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const CustomFormatException();
+    } on PlatformException catch (e) {
+      throw CustomPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again later.";
+    }
+  }
 
   //facebook
   /*----------------logout----------------*/
   Future<void> logout() async {
     try {
       await _auth.signOut();
+      await _googleSignIn.signOut();
     } on FirebaseAuthException catch (e) {
       throw CustomFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
       throw CustomFirebaseException(e.code).message;
-    } on FormatException catch (e) {
+    } on FormatException catch (_) {
       throw const CustomFormatException();
     } on PlatformException catch (e) {
       throw CustomPlatformException(e.code).message;

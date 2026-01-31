@@ -1,5 +1,6 @@
 import 'package:e_commerce/common/widgets/loaders/loaders.dart';
 import 'package:e_commerce/data/repositories/authentication/authentication_repository.dart';
+import 'package:e_commerce/features/personalization/controllers/user_controller.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/storage_keys.dart';
 import 'package:e_commerce/utils/helpers/network_manager.dart';
@@ -30,7 +31,7 @@ class LoginController extends GetxController {
   final rememberMe = false.obs;
   final localStorage = GetStorage();
 
-  Future<void> login() async {
+  Future<void> loginWithEmailAndPassword() async {
     try {
       //hide keyboard
       FocusManager.instance.primaryFocus?.unfocus();
@@ -72,6 +73,39 @@ class LoginController extends GetxController {
     } catch (e) {
       FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(title: "On snap!", message: e.toString());
+    }
+  }
+
+  Future<void> googleSignIn() async {
+    try {
+      //show loader
+      FullScreenLoader.openLoadingDialog(
+        "Logging you in...",
+        ImageStrings.processing,
+      );
+
+      //check internet
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        FullScreenLoader.stopLoading();
+        return;
+      }
+
+      //fire google sign in
+      final credentials = await AuthenticationRepository.instance
+          .signInWithGoogle();
+
+      //save user data
+      await UserController.instance.saveUserRecord(credentials);
+
+      //stop loader
+      FullScreenLoader.stopLoading();
+
+      //fire re-direct
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      FullScreenLoader.stopLoading();
+      Loaders.errorSnackBar(title: "On Snap", message: e.toString());
     }
   }
 }
