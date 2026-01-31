@@ -47,6 +47,27 @@ class AuthenticationRepository extends GetxController {
 
   /*----------------E-mail & passwork sign in----------------*/
   // Sign in [Authentication]
+  Future<UserCredential> signInWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      throw CustomFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw CustomFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw CustomPlatformException(e.code).message;
+    } on FormatException catch (e) {
+      throw CustomFormatException(e.message);
+    } catch (e) {
+      throw "Something went wrong. Please try again later.";
+    }
+  }
 
   //Register
   Future<UserCredential> registerUserWithEmailAndPass(
@@ -87,6 +108,7 @@ class AuthenticationRepository extends GetxController {
       throw "Something went wrong. Please try again later.";
     }
   }
+
   //Re-authenticate user
   //forget password
 
@@ -95,10 +117,10 @@ class AuthenticationRepository extends GetxController {
 
   //facebook
   /*----------------logout----------------*/
-  Future<void> logout() async{
+  Future<void> logout() async {
     try {
       await _auth.signOut();
-    }on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       throw CustomFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
       throw CustomFirebaseException(e.code).message;
@@ -106,9 +128,10 @@ class AuthenticationRepository extends GetxController {
       throw const CustomFormatException();
     } on PlatformException catch (e) {
       throw CustomPlatformException(e.code).message;
-    } catch(e) {
+    } catch (e) {
       throw "Something went wrong. Please try again later.";
     }
   }
+
   /*----------------delete use----------------*/
 }

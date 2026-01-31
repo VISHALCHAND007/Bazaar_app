@@ -2,6 +2,7 @@ import 'package:e_commerce/common/widgets/appbar/custom_app_bar.dart';
 import 'package:e_commerce/common/widgets/customShapes/containers/custom_header_container.dart';
 import 'package:e_commerce/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_commerce/features/personalization/screens/address/addresses.dart';
 import 'package:e_commerce/features/shop/screens/cart/cart_screen.dart';
 import 'package:e_commerce/features/shop/screens/orders/orders_screen.dart';
@@ -99,7 +100,10 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(height: CustomSize.spaceBtwSections),
 
                   //App settings
-                  const SectionHeading(title: "App Settings", showActionBtn: false),
+                  const SectionHeading(
+                    title: "App Settings",
+                    showActionBtn: false,
+                  ),
                   const SizedBox(height: CustomSize.spaceBtwItems),
                   const SettingsMenuTile(
                     icon: Iconsax.document_upload,
@@ -127,7 +131,16 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(height: CustomSize.spaceBtwSections),
 
                   //logout
-                  SizedBox(width: .infinity, child: OutlinedButton(onPressed: () {}, child: const Text("Logout")),),
+                  SizedBox(
+                    width: .infinity,
+                    child: OutlinedButton(
+                      onPressed:() async {
+                        await AuthenticationRepository.instance.logout();
+                        AuthenticationRepository.instance.screenRedirect();
+                      },
+                      child: const Text("Logout"),
+                    ),
+                  ),
                   const SizedBox(height: CustomSize.spaceBtwSections * 2.5),
                 ],
               ),
