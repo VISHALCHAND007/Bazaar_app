@@ -1,3 +1,5 @@
+import 'package:e_commerce/features/authentication/controllers/forget_password/forget_password_controller.dart';
+import 'package:e_commerce/features/authentication/screens/login/login_screen.dart';
 import 'package:e_commerce/utils/constants/custom_size.dart';
 import 'package:e_commerce/utils/constants/custom_strings.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
@@ -8,7 +10,9 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
+  const ResetPassword({super.key, required this.email});
+
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +39,9 @@ class ResetPassword extends StatelessWidget {
                   width: double.infinity,
                 ),
 
+                Text(email, style: Theme.of(context).textTheme.bodyMedium),
+                const SizedBox(height: CustomSize.spaceBtwItems),
+
                 //title and subtitle
                 Text(
                   CustomStrings.changeYourPasswordTitle,
@@ -52,7 +59,7 @@ class ResetPassword extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => Get.offAll(() => const LoginScreen()),
                     child: const Text(CustomStrings.done),
                   ),
                 ),
@@ -60,7 +67,8 @@ class ResetPassword extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => ForgetPasswordController.instance
+                        .reSendPasswordResetLink(email),
                     child: const Text(CustomStrings.resendEmail),
                   ),
                 ),
