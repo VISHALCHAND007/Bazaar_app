@@ -8,6 +8,31 @@ import '../models/user_model.dart';
 class UserController extends GetxController {
   static UserController get instance => Get.find();
 
+  //for the details of the current user
+  Rx<UserModel?> user = UserModel.empty().obs;
+  final userRepository = UserRepository.instance;
+  final profileLoading = false.obs;
+
+  //to save the user details when the class in initiated
+  @override
+  void onInit() {
+    super.onInit();
+    fetchUserDetails();
+  }
+
+  void fetchUserDetails() async {
+    try {
+      profileLoading.value = true;
+      final result = await userRepository.fetchUserDetails();
+      user(result);
+    } catch (e) {
+      user(UserModel.empty());
+    } finally {
+      profileLoading.value = false;
+    }
+  }
+
+  //saving user details
   Future<void> saveUserRecord(UserCredential? credentials) async {
     try {
       if (credentials != null) {
@@ -31,7 +56,7 @@ class UserController extends GetxController {
         );
 
         //saving user data
-        await UserRepository.instance.saveUserRecord(user);
+        await userRepository.saveUserRecord(user);
       }
     } catch (e) {
       Loaders.errorSnackBar(

@@ -63,21 +63,22 @@ class UserModel {
   }
 
   //factory method to create user model from firebase response
-  // factory UserModel.fromSnapShot(
-  //   DocumentSnapshot<Map<String, dynamic>> document,
-  // ) {
-  //   if (document.data() != null) {
-  //     final data = document.data()!;
-  //     return UserModel(
-  //       id: document.id,
-  //       firstName: data['first_name'] ?? "",
-  //       lastName: data['last_name'] ?? "",
-  //       username: data['username'] ?? "",
-  //       email: data['email'] ?? "",
-  //       phoneNumber: data['phone_number'] ?? "",
-  //       profilePicture: data['profile_pic'] ?? "",
-  //     );
-  //   }
-  //   UserModel.empty();
-  // }
+  factory UserModel.fromSnapShot(
+    DocumentSnapshot<Map<String, dynamic>> document,
+  ) {
+    if (document.data() != null) {
+      final data = document.data()!;
+      return UserModel(
+        id: document.id,
+        firstName: data['first_name'] ?? "",
+        lastName: data['last_name'] ?? "",
+        username: data['username'] ?? "",
+        email: data['email'] ?? "",
+        phoneNumber: data['phone_number'] ?? "",
+        profilePicture: data['profile_pic'] ?? "",
+      );
+    } else {
+      return UserModel.empty();
+    }
+  }
 }
