@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/personalization/controllers/user_controller.dart';
 import 'package:e_commerce/features/personalization/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,8 @@ class UserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return ListTile(
       leading: const RoundedImage(
         imageUrl: ImageStrings.user,
@@ -20,13 +23,13 @@ class UserProfileTile extends StatelessWidget {
         padding: EdgeInsets.zero,
       ),
       title: Text(
-        "Vishal Chand",
+        controller.user.value?.fullName ?? "",
         style: Theme.of(
           context,
         ).textTheme.headlineMedium!.apply(color: MyColors.white),
       ),
       subtitle: Text(
-        "support@indie-tect.com",
+        controller.user.value?.email ?? "",
         style: Theme.of(
           context,
         ).textTheme.bodyMedium!.apply(color: MyColors.white),

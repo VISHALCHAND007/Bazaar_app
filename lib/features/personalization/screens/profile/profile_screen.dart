@@ -7,12 +7,15 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/custom_size.dart';
 import '../../../../utils/constants/image_strings.dart';
+import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return SafeArea(
       child: Scaffold(
         appBar: const CustomAppBar(
@@ -50,12 +53,12 @@ class ProfileScreen extends StatelessWidget {
 
                 ProfileMenu(
                   title: "Name",
-                  value: "Vishal Chand",
+                  value: controller.user.value?.fullName ?? "",
                   onPressed: () {},
                 ),
                 ProfileMenu(
                   title: "Username",
-                  value: "vishal_chand96",
+                  value: controller.user.value?.username ?? "",
                   onPressed: () {},
                 ),
 
@@ -73,18 +76,18 @@ class ProfileScreen extends StatelessWidget {
                 ProfileMenu(
                   onPressed: () {},
                   title: "UserId",
-                  value: "djldfa1122da2fd",
+                  value: controller.user.value?.id ?? "",
                   icon: Iconsax.copy,
                 ),
                 ProfileMenu(
                   onPressed: () {},
                   title: "E-mail",
-                  value: "vishal.chand@gmail.in",
+                  value: controller.user.value?.email ?? "",
                 ),
                 ProfileMenu(
                   onPressed: () {},
                   title: "Phone Number",
-                  value: "+91 5248759685",
+                  value: controller.user.value?.phoneNumber ?? "",
                 ),
                 ProfileMenu(onPressed: () {}, title: "Gender", value: "Male"),
                 ProfileMenu(
