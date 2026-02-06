@@ -1,8 +1,10 @@
 import 'package:e_commerce/common/widgets/appbar/custom_app_bar.dart';
 import 'package:e_commerce/common/widgets/images/circular_image.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/personalization/screens/profile/widgets/change_name_screen.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/custom_size.dart';
@@ -51,10 +53,12 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: CustomSize.spaceBtwItems),
 
-                ProfileMenu(
-                  title: "Name",
-                  value: controller.user.value?.fullName ?? "",
-                  onPressed: () {},
+                Obx(
+                  () => ProfileMenu(
+                    title: "Name",
+                    value: controller.user.value?.fullName ?? "",
+                    onPressed: () => Get.to(() => const ChangeNameScreen()),
+                  ),
                 ),
                 ProfileMenu(
                   title: "Username",

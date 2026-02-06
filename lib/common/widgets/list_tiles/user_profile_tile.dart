@@ -22,17 +22,21 @@ class UserProfileTile extends StatelessWidget {
         width: 56,
         padding: EdgeInsets.zero,
       ),
-      title: Text(
-        controller.user.value?.fullName ?? "",
-        style: Theme.of(
-          context,
-        ).textTheme.headlineMedium!.apply(color: MyColors.white),
+      title: Obx(
+        () => Text(
+          controller.user.value?.fullName ?? "",
+          style: Theme.of(
+            context,
+          ).textTheme.headlineMedium!.apply(color: MyColors.white),
+        ),
       ),
-      subtitle: Text(
-        controller.user.value?.email ?? "",
-        style: Theme.of(
-          context,
-        ).textTheme.bodyMedium!.apply(color: MyColors.white),
+      subtitle: Obx(
+        () => Text(
+          controller.user.value?.email ?? "",
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium!.apply(color: MyColors.white),
+        ),
       ),
       trailing: IconButton(
         onPressed: () => Get.to(() => const ProfileScreen()),

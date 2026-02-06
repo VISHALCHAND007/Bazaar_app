@@ -1,6 +1,7 @@
 import 'package:e_commerce/common/widgets/loaders/loaders.dart';
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../models/user_model.dart';
@@ -12,6 +13,12 @@ class UserController extends GetxController {
   Rx<UserModel?> user = UserModel.empty().obs;
   final userRepository = UserRepository.instance;
   final profileLoading = false.obs;
+
+  //var
+  final hidePassword = false.obs;
+  final verifyEmail = TextEditingController();
+  final verifyPassword = TextEditingController();
+  final reAuthFormKey = GlobalKey<FormState>();
 
   //to save the user details when the class in initiated
   @override
