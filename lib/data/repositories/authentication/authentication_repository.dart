@@ -1,3 +1,4 @@
+import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/features/authentication/screens/login/login_screen.dart';
 import 'package:e_commerce/features/authentication/screens/navigation_menu/navigation_menu.dart';
 import 'package:e_commerce/features/authentication/screens/onboarding/onboarding_screen.dart';
@@ -13,7 +14,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
-  final _auth = FirebaseAuth.instance;
+  final auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   final deviceStorage = GetStorage();
@@ -25,10 +26,10 @@ class AuthenticationRepository extends GetxController {
   }
 
   //get the current user
-  User? get currentUser => _auth.currentUser;
+  User? get currentUser => auth.currentUser;
 
   void screenRedirect() async {
-    final user = _auth.currentUser;
+    final user = auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
         // ignore: prefer_const_constructors
@@ -53,7 +54,7 @@ class AuthenticationRepository extends GetxController {
     String password,
   ) async {
     try {
-      return await _auth.signInWithEmailAndPassword(
+      return await auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -76,7 +77,7 @@ class AuthenticationRepository extends GetxController {
     String password,
   ) async {
     try {
-      return await _auth.createUserWithEmailAndPassword(
+      return await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -96,7 +97,7 @@ class AuthenticationRepository extends GetxController {
   //Mail verification
   Future<void> sendEmailForVerification() async {
     try {
-      await _auth.currentUser?.sendEmailVerification();
+      await auth.currentUser?.sendEmailVerification();
     } on FirebaseAuthException catch (e) {
       throw CustomFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -111,11 +112,34 @@ class AuthenticationRepository extends GetxController {
   }
 
   //Re-authenticate user
-  
+  Future<void> reAuthenticatedUserWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      );
+      //re-authentication
+      await auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw CustomFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw CustomFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const CustomFormatException();
+    } on PlatformException catch (e) {
+      throw CustomPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again later.";
+    }
+  }
+
   //forget password
   Future<void> sendPasswordResetLink(String email) async {
     try {
-      await _auth.sendPasswordResetEmail(email: email);
+      await auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       throw CustomFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -146,7 +170,7 @@ class AuthenticationRepository extends GetxController {
       );
 
       //using credentials signin
-      return await _auth.signInWithCredential(credentials);
+      return await auth.signInWithCredential(credentials);
     } on FirebaseAuthException catch (e) {
       throw CustomFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -164,7 +188,7 @@ class AuthenticationRepository extends GetxController {
   /*----------------logout----------------*/
   Future<void> logout() async {
     try {
-      await _auth.signOut();
+      await auth.signOut();
       await _googleSignIn.signOut();
     } on FirebaseAuthException catch (e) {
       throw CustomFirebaseAuthException(e.code).message;
@@ -180,4 +204,21 @@ class AuthenticationRepository extends GetxController {
   }
 
   /*----------------delete use----------------*/
+  Future<void> deleteAccount() async {
+    try {
+      //deleting user record first because we need the document id to delete the record which is fetched with currentUser obj
+      await UserRepository.instance.removeUserRecord(auth.currentUser!.uid);
+      await auth.currentUser!.delete();
+    } on FirebaseAuthException catch (e) {
+      throw CustomFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw CustomFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const CustomFormatException();
+    } on PlatformException catch (e) {
+      throw CustomPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again later.";
+    }
+  }
 }
