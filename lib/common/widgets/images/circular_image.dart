@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce/common/widgets/loaders/custom_shimmer_effect.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/custom_size.dart';
@@ -46,13 +48,19 @@ class RoundedImage extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: applyImageRadius ? .circular(borderRadius) : .zero,
-          child: Image(
-            fit: fit,
-            color: foregroundColor,
-            image: isNetworkImage
-                ? NetworkImage(imageUrl)
-                : AssetImage(imageUrl),
-          ),
+          child: isNetworkImage
+              ? CachedNetworkImage(
+                  fit: fit,
+                  imageUrl: imageUrl,
+                  color: foregroundColor,
+                  progressIndicatorBuilder: (context, url, downloadProgress) => const CustomShimmerEffect(height: 55, width: 55, radius: 55,),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                )
+              : Image(
+                  fit: fit,
+                  color: foregroundColor,
+                  image: AssetImage(imageUrl),
+                ),
         ),
       ),
     );

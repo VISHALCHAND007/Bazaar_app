@@ -9,6 +9,7 @@ import 'package:e_commerce/utils/popups/full_screen_loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../utils/constants/custom_size.dart';
 import '../models/user_model.dart';
@@ -23,6 +24,7 @@ class UserController extends GetxController {
 
   //var
   final hidePassword = false.obs;
+  final profileImageLoading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final reAuthFormKey = GlobalKey<FormState>();
@@ -34,7 +36,7 @@ class UserController extends GetxController {
     fetchUserDetails();
   }
 
-  void fetchUserDetails() async {
+  Future<void> fetchUserDetails() async {
     try {
       profileLoading.value = true;
       final result = await userRepository.fetchUserDetails();
@@ -49,6 +51,10 @@ class UserController extends GetxController {
   //saving user details
   Future<void> saveUserRecord(UserCredential? credentials) async {
     try {
+      //first updating the Rx variable [user] then check if the user is null or not
+      await fetchUserDetails();
+
+      //if not record already stored
       if (credentials != null) {
         final nameParts = UserModel.nameParts(
           credentials.user?.displayName ?? "",
@@ -91,7 +97,7 @@ class UserController extends GetxController {
         onPressed: () {
           Navigator.of(Get.overlayContext!).pop();
           deleteUserAccount();
-        } ,
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.red,
           side: const BorderSide(color: Colors.red),
@@ -171,6 +177,38 @@ class UserController extends GetxController {
     } catch (e) {
       FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(title: "On Snap!", message: e.toString());
+    }
+  }
+
+  //upload user profile picture
+  void uploadUserProfilePicture() async {
+    try {
+      final selectedImg = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 70,
+      );
+      if (selectedImg != null) {
+        profileImageLoading.value = true;
+        //upload image to storage
+        final downloadUrl = await userRepository.uploadImage(
+          "Users/Images/Profile",
+          selectedImg,
+        );
+
+        //update the user record
+        Map<String, dynamic> json = {"profile_pic": downloadUrl};
+        await userRepository.updateSingleUserField(json);
+
+        //update the local user model
+        user.value?.profilePicture = downloadUrl;
+        user.refresh();
+
+        Loaders.successSnackBar(title: "Congratulations", message: "Your profile has been updated.");
+      }
+    } catch (e) {
+      Loaders.errorSnackBar(title: "On Snap", message: "Something went wrong: $e");
+    } finally {
+      profileImageLoading.value = false;
     }
   }
 }
