@@ -1,9 +1,9 @@
+import 'package:e_commerce/common/widgets/images/circular_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/custom_size.dart';
 import '../../../utils/constants/my_colors.dart';
 import '../../../utils/helpers/helpers.dart';
-
 
 class ProductWithTitle extends StatelessWidget {
   const ProductWithTitle({
@@ -13,12 +13,14 @@ class ProductWithTitle extends StatelessWidget {
     this.textColor = MyColors.white,
     this.backgroundColor = MyColors.white,
     this.onTap,
+    this.networkImage = false,
   });
 
   final String title, image;
   final Color textColor;
   final Color? backgroundColor;
   final Function()? onTap;
+  final bool networkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -30,24 +32,18 @@ class ProductWithTitle extends StatelessWidget {
         child: Column(
           children: [
             //Image
-            Container(
-              height: 56,
+            RoundedImage(
               width: 56,
-              padding: const .all(CustomSize.sm),
-              decoration: BoxDecoration(
-                color:
-                backgroundColor ??
-                    (isDark ? MyColors.black : MyColors.light),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Center(
-                child: Image.asset(
-                  image,
-                  fit: BoxFit.cover,
-                  // color: isDark ? MyColors.light : MyColors.dark,
-                ),
-              ),
+              height: 56,
+              applyImageRadius: true,
+              borderRadius: 56,
+              imageUrl: image,
+              fit: .cover,
+              padding: const EdgeInsets.all(2),
+              isNetworkImage: networkImage,
+              backgroundColor: backgroundColor,
             ),
+
             const SizedBox(height: CustomSize.spaceBtwItems / 2),
 
             //item name

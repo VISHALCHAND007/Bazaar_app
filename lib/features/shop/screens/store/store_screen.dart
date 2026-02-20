@@ -4,6 +4,7 @@ import 'package:e_commerce/common/widgets/customShapes/containers/search_contain
 import 'package:e_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:e_commerce/common/widgets/products/cart/cart_icon_with_label.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/shop/controllers/category_controller.dart';
 import 'package:e_commerce/features/shop/screens/brands/all_brands.dart';
 import 'package:e_commerce/features/shop/screens/store/widgets/category_tabs.dart';
 import 'package:e_commerce/utils/helpers/helpers.dart';
@@ -20,6 +21,7 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Helpers.isDarkMode(context);
+    final categoryController = CategoryController.instance;
 
     return DefaultTabController(
       length: 5,
@@ -76,28 +78,24 @@ class StoreScreen extends StatelessWidget {
                       GridLayout(
                         itemCount: 4,
                         mainAxisExtent: 80,
-                        itemBuilder: (_, ind) => BrandCard(onTap: () {},),
+                        itemBuilder: (_, ind) => BrandCard(onTap: () {}),
                       ),
                     ],
                   ),
                 ),
-                bottom: const CustomTabBar(
-                  tabs: [
-                    Tab(child: Text("Sports")),
-                    Tab(child: Text("Furniture")),
-                    Tab(child: Text("Electronics")),
-                    Tab(child: Text("Clothes")),
-                    Tab(child: Text("Cosmetics")),
-                    // Tab(child: Text("Accessories")),
-                  ],
+                bottom: CustomTabBar(
+                  tabs: categoryController.featuredCategories
+                      .map((category) => Tab(child: Text(category.name)))
+                      .toList(),
                 ),
               ),
             ];
           },
           body: TabBarView(
             children: [
-              for (var i = 0; i < 5; i++)
-                const CategoryTabs(),
+              ...categoryController.featuredCategories.map(
+                (category) => CategoryTabs(category: category),
+              ),
             ],
           ),
         ),

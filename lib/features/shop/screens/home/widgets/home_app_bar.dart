@@ -1,4 +1,3 @@
-import 'package:e_commerce/common/widgets/loaders/custom_shimmer_effect.dart';
 import 'package:e_commerce/features/personalization/controllers/user_controller.dart';
 import 'package:e_commerce/features/shop/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../../../common/widgets/appbar/custom_app_bar.dart';
 import '../../../../../common/widgets/products/cart/cart_icon_with_label.dart';
+import '../../../../../common/widgets/shimmer/custom_shimmer_effect.dart';
 import '../../../../../utils/constants/custom_strings.dart';
 import '../../../../../utils/constants/my_colors.dart';
 

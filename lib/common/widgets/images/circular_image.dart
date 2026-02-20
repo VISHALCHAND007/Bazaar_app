@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce/common/widgets/loaders/custom_shimmer_effect.dart';
+import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/custom_size.dart';
+import '../../../utils/helpers/helpers.dart';
+import '../shimmer/custom_shimmer_effect.dart';
 
 class RoundedImage extends StatelessWidget {
   const RoundedImage({
@@ -49,13 +52,30 @@ class RoundedImage extends StatelessWidget {
         child: ClipRRect(
           borderRadius: applyImageRadius ? .circular(borderRadius) : .zero,
           child: isNetworkImage
-              ? CachedNetworkImage(
-                  fit: fit,
-                  imageUrl: imageUrl,
-                  color: foregroundColor,
-                  progressIndicatorBuilder: (context, url, downloadProgress) => const CustomShimmerEffect(height: 55, width: 55, radius: 55,),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                )
+              ? imageUrl.isEmpty
+                    ? Center(
+                        child: Icon(
+                          Icons.error,
+                          size: 36,
+                          color: Helpers.isDarkMode(context)
+                              ? Colors.black
+                              : Colors.white,
+                        ),
+                      )
+                    : CachedNetworkImage(
+                        fit: fit,
+                        imageUrl: imageUrl,
+                        color: foregroundColor,
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) =>
+                                const CustomShimmerEffect(
+                                  height: 55,
+                                  width: 55,
+                                  radius: 55,
+                                ),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      )
               : Image(
                   fit: fit,
                   color: foregroundColor,

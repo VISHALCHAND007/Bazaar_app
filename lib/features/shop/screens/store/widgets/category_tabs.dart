@@ -1,6 +1,7 @@
 import 'package:e_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:e_commerce/common/widgets/products/products_card/products_card_vertical.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce/features/shop/models/categories_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/brands/brand_show_case.dart';
@@ -8,7 +9,8 @@ import '../../../../../utils/constants/custom_size.dart';
 import '../../../../../utils/constants/image_strings.dart';
 
 class CategoryTabs extends StatelessWidget {
-  const CategoryTabs({super.key});
+  final CategoriesModel category;
+  const CategoryTabs({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {

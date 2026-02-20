@@ -1,6 +1,5 @@
 import 'package:e_commerce/common/widgets/appbar/custom_app_bar.dart';
 import 'package:e_commerce/common/widgets/images/circular_image.dart';
-import 'package:e_commerce/common/widgets/loaders/custom_shimmer_effect.dart';
 import 'package:e_commerce/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/change_name_screen.dart';
 import 'package:e_commerce/features/personalization/screens/profile/widgets/profile_menu.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../common/widgets/shimmer/custom_shimmer_effect.dart';
 import '../../../../utils/constants/custom_size.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../controllers/user_controller.dart';

@@ -1,3 +1,5 @@
+import 'package:e_commerce/common/widgets/shimmer/category_shimmer.dart';
+import 'package:e_commerce/features/shop/controllers/category_controller.dart';
 import 'package:e_commerce/features/shop/screens/subCategories/sub_categories_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,18 +10,15 @@ import '../../../../../utils/constants/custom_size.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/my_colors.dart';
 
-
 class HomeCategories extends StatelessWidget {
-  const HomeCategories({
-    super.key,
-  });
+  const HomeCategories({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final categoryController = CategoryController.instance;
+
     return Padding(
-      padding: const EdgeInsetsGeometry.only(
-        left: CustomSize.spaceBtwItems,
-      ),
+      padding: const EdgeInsetsGeometry.only(left: CustomSize.spaceBtwItems),
       child: Column(
         children: [
           //heading
@@ -31,19 +30,39 @@ class HomeCategories extends StatelessWidget {
           const SizedBox(height: CustomSize.spaceBtwItems),
 
           //Category items
-          SizedBox(
-            height: 100,
-            child: ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: .horizontal,
-              itemCount: 9,
-              itemBuilder: (_, ind) => ProductWithTitle(
-                title: "Pixel 19 pro",
-                image: ImageStrings.facebook,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
+          Obx(() {
+            if (categoryController.isLoading.value) {
+              return const CategoryShimmer();
+            }
+
+            if (categoryController.featuredCategories.isEmpty) {
+              return Center(
+                child: Text(
+                  "No data found.",
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium!.apply(color: Colors.white),
+                ),
+              );
+            }
+            return SizedBox(
+              height: 100,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: .horizontal,
+                itemCount: categoryController.featuredCategories.length,
+                itemBuilder: (_, ind) {
+                  final category = categoryController.featuredCategories[ind];
+                  return ProductWithTitle(
+                    title: category.name,
+                    image: category.image,
+                    networkImage: true,
+                    onTap: () => Get.to(() => const SubCategoriesScreen()),
+                  );
+                },
               ),
-            ),
-          ),
+            );
+          }),
         ],
       ),
     );
