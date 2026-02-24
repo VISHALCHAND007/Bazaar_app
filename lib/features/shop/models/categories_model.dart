@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CategoriesModel {
   final String id;
   final String name;
-  final String image;
+  String image;
   final bool isFeatured;
   final String parentId;
 

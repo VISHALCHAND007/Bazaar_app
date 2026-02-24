@@ -24,7 +24,7 @@ class StoreScreen extends StatelessWidget {
     final categoryController = CategoryController.instance;
 
     return DefaultTabController(
-      length: 5,
+      length: categoryController.featuredCategories.length,
       child: Scaffold(
         appBar: CustomAppBar(
           title: SizedBox(
