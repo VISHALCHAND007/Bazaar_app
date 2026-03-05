@@ -41,10 +41,12 @@ class CategoryRepository extends GetxController {
         final imageData = await storage.getImageDataFromAssets(category.image);
         
         //upload image
-        final url = await storage.uploadImageData("Categories", imageData, category.name);
-
-        //assign url to category.image
-        category.image = url;
+        if(imageData != null) {
+          final url = await storage.uploadImageData(
+              "Categories", imageData, category.name);
+          //assign url to category.image
+          category.image = url;
+        }
 
         //update the firebase firestore
         await _db.collection(FirebaseCollectionDetails.categoriesCollection).doc(category.id).set(category.toJson());

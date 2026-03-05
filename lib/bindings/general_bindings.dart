@@ -3,6 +3,7 @@ import 'package:e_commerce/data/repositories/categories/category_repository.dart
 import 'package:e_commerce/data/repositories/user/user_repository.dart';
 import 'package:e_commerce/features/authentication/controllers/forget_password/forget_password_controller.dart';
 import 'package:e_commerce/features/authentication/controllers/login/login_controller.dart';
+import 'package:e_commerce/features/personalization/controllers/dummy_data_controller.dart';
 import 'package:e_commerce/features/personalization/controllers/update_name_controller.dart';
 import 'package:e_commerce/features/personalization/controllers/user_controller.dart';
 import 'package:e_commerce/features/shop/controllers/category_controller.dart';
@@ -24,5 +25,6 @@ class GeneralBindings extends Bindings {
     Get.put(UserController());
     Get.put(ForgetPasswordController());
     Get.put(CategoryController());
+    Get.put(DummyDataController());
   }
 }
